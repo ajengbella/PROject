@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Router } from "react-router-dom";
 import propTypes from "prop-types";
 
 export default function Button(props) {
   const className = [props.className];
-  if (props.isPrimary) className.push("btn-primary");
-  if (props.isLarge) className.push("btn-lg");
-  if (props.isSmall) className.push("btn-sm");
-  if (props.isBlock) className.push("btn-block");
-  if (props.hasShadow) className.push("btn-shadow");
+  if (props.isPrimary) className.push(" btn-primary");
+  if (props.isLarge) className.push(" btn-lg");
+  if (props.isSmall) className.push(" btn-sm");
+  if (props.isBlock) className.push(" btn-block");
+  if (props.hasShadow) className.push(" btn-shadow");
 
   const onClick = () => {
     if (props.onClick) props.onClick();
@@ -28,6 +28,8 @@ export default function Button(props) {
       </span>
     );
   }
+
+  console.log(props);
 
   if (props.type === "link") {
     if (props.isEkternal) {
@@ -53,6 +55,7 @@ export default function Button(props) {
           {props.children}
         </Link>
       );
+      return <div>{props.children}</div>;
     }
   }
   return (
@@ -61,7 +64,7 @@ export default function Button(props) {
       style={props.style}
       onClick={onClick}
     >
-      {props.childern}
+      {props.children}
     </button>
   );
 }
@@ -73,6 +76,7 @@ Button.propTypes = {
   href: propTypes.string,
   isDisabled: propTypes.bool,
   isLoading: propTypes.bool,
+  isPrimary: propTypes.bool,
   isExternal: propTypes.bool,
   isSmall: propTypes.bool,
   isLarge: propTypes.bool,

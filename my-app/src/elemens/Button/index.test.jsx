@@ -1,7 +1,8 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Button from "./index";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+
+import Button from ".";
 
 test("Should not allowed click button if isDisabled is present", () => {
   const { container } = render(<Button isDisabled></Button>);
@@ -31,4 +32,8 @@ test("Should render <Link> component", () => {
   );
 
   expect(container.querySelector("a")).toBeInTheDocument();
+});
+test("should render <a> componen", () => {
+  const { container } = render(<button type='link' isExternal></button>);
+  expect(container.querySelector("a"));
 });
